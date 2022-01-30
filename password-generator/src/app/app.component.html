@@ -1,20 +1,28 @@
 <h1>Password Generator</h1>
 <div class="">
   <label>Enter Length</label>
-  <input type="text">
+  <input type="text"
+         (input)="onChangeLength($event)"
+  >
 </div>
 
 <div class="">
   <label>Use Letters</label>
-  <input type="checkbox">
+  <input type="checkbox"
+         (input)="onChangeUseLetters()"
+  >
 </div>
 <div class="">
   <label>Use Numbers</label>
-  <input type="checkbox">
+  <input type="checkbox"
+         (input)="onChangeUseNumbers()"
+  >
 </div>
 <div class="">
   <label>Use Symbols</label>
-  <input type="checkbox">
+  <input type="checkbox"
+         (input)="onChangeUseSymbols()"
+  >
 </div>
 <div class="">
   <button (click)="generatePassword()">Generate</button>

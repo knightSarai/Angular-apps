@@ -35,22 +35,17 @@ export class AppComponent {
     const numbers = '0123456789';
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const symbols = '!@#$%^&*()';
-    this.password = this.passwordLength > 0 ?
-      Array(this.passwordLength)
-        .fill(0)
-        .map(() => {
-          const random = Math.floor(Math.random() * 3);
-          switch (random) {
-            case 0:
-              return this.useLetters ? letters[Math.floor(Math.random() * letters.length)] : '';
-            case 1:
-              return this.useNumbers ? numbers[Math.floor(Math.random() * numbers.length)] : '';
-            case 2:
-              return this.useSymbols ? symbols[Math.floor(Math.random() * symbols.length)] : '';
-            default:
-              return '';
-          }
-        })
-        .join('') : '';
+    let validChoices = '';
+    if (this.useLetters) validChoices += letters;
+    if (this.useNumbers) validChoices += numbers;
+    if (this.useSymbols) validChoices += symbols;
+    let generatedPassword = '';
+    for (let i = 0; i < this.passwordLength; i++) {
+      const randomIndex = Math.floor(Math.random() * validChoices.length);
+      generatedPassword += validChoices[randomIndex]?? "";
+    }
+    this.password = generatedPassword
   }
+
+  // Add copy to clipboard functionality
 }

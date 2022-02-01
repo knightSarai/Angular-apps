@@ -1,0 +1,74 @@
+<h2>Password Generator</h2>
+<form class="m-2 border p-4 rounded">
+  <div class="mb-3">
+    <label for="passwordLength"
+           class="form-label"
+    >
+      Password Length
+    </label>
+    <input type="text"
+           (input)="onChangeLength($event)"
+           class="form-control"
+           id="passwordLength"
+           aria-describedby="lengthHelp"
+    >
+    <div id="emailHelp"
+         class="form-text"
+    >
+      Select the length of the password
+    </div>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox"
+           class="form-check-input"
+           id="useLetter"
+           (input)="onChangeUseLetters()"
+    >
+    <label class="form-check-label"
+           for="useLetter"
+    >
+      Use Letter
+    </label>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox"
+           class="form-check-input"
+           id="useNumbers"
+           (input)="onChangeUseNumbers()"
+    >
+    <label class="mb-3 form-check-label"
+           for="useNumbers"
+    >
+      Use Numbers
+    </label>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox"
+           class="form-check-input"
+           id="useSymbols"
+           (input)="onChangeUseSymbols()"
+    >
+    <label class="form-check-label"
+           for="useSymbols"
+    >
+      Use Symbols
+    </label>
+  </div>
+  <button class="btn btn-outline-primary"
+          [disabled]="!passwordLength"
+          (click)="generatePassword()"
+          type="button"
+  >
+    Generate!
+  </button>
+  <hr>
+  <div *ngIf="password"
+       class="col-md-12 text-center mt-2"
+  >
+    <h3>
+      Your password is:
+      <br>
+      <span class="badge bg-secondary">{{password}}</span>
+    </h3>
+  </div>
+</form>

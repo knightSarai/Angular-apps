@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +12,49 @@ export class FormComponent implements OnInit {
   useLetters = false;
   useNumbers = false;
   useSymbols = false;
+
+  formInputs = [
+    {
+      name: 'passwordLength',
+      label: 'Password Length',
+      type: 'text',
+      classes: '',
+      inputClasses: 'form-control',
+      labelClasses: 'form-label',
+      value: this.passwordLength,
+      callback: (event: Event) => this.onChangeLength(event)
+    },
+    {
+      name: 'letters',
+      label: 'Use Letters',
+      type: 'checkbox',
+      inputClasses: 'form-check-input',
+      classes: 'form-check',
+      labelClasses: 'form-check-label',
+      value: this.useLetters,
+      callback: () => this.onChangeUseLetters()
+    },
+    {
+      name: 'numbers',
+      label: 'Use Numbers',
+      type: 'checkbox',
+      inputClasses: 'form-check-input',
+      classes: 'form-check',
+      labelClasses: 'form-check-label',
+      value: this.useNumbers,
+      callback: () => this.onChangeUseNumbers()
+    },
+    {
+      name: 'symbols',
+      label: 'Use Symbols',
+      type: 'checkbox',
+      inputClasses: 'form-check-input',
+      classes: 'form-check',
+      labelClasses: 'form-check-label',
+      value: this.useSymbols,
+      callback: () => this.onChangeUseSymbols()
+    },
+  ]
 
   onChangeLength(event: Event) {
     const inputValue = (<HTMLInputElement>event.target).value;
@@ -42,7 +85,7 @@ export class FormComponent implements OnInit {
     let generatedPassword = '';
     for (let i = 0; i < this.passwordLength; i++) {
       const randomIndex = Math.floor(Math.random() * validChoices.length);
-      generatedPassword += validChoices[randomIndex]?? "";
+      generatedPassword += validChoices[randomIndex] ?? "";
     }
     this.password = generatedPassword
   }

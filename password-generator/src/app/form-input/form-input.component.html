@@ -1,0 +1,12 @@
+<div [class]="'mb-3 ' + input.classes">
+  <label [for]="input.name"
+         [class]="input.labelClasses"
+  >
+    {{input.label}}
+  </label>
+  <input [type]="input.type"
+         [class]="'' + input.inputClasses"
+         [id]="input.name"
+         (input)="input.callback($event)"
+  >
+</div>

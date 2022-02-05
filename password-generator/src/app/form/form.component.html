@@ -6,8 +6,9 @@
     >
       Password Length
     </label>
-    <input type="text"
-           (input)="onChangeLength($event)"
+    <input type="number"
+           [(ngModel)]="passwordLength"
+           [ngModelOptions]="{standalone: true}"
            class="form-control"
            id="passwordLength"
            aria-describedby="lengthHelp"
@@ -22,7 +23,8 @@
     <input type="checkbox"
            class="form-check-input"
            id="useLetter"
-           (input)="onChangeUseLetters()"
+           [(ngModel)]="useLetters"
+           [ngModelOptions]="{standalone: true}"
     >
     <label class="form-check-label"
            for="useLetter"
@@ -34,7 +36,8 @@
     <input type="checkbox"
            class="form-check-input"
            id="useNumbers"
-           (input)="onChangeUseNumbers()"
+           [(ngModel)]="useNumbers"
+           [ngModelOptions]="{standalone: true}"
     >
     <label class="mb-3 form-check-label"
            for="useNumbers"
@@ -46,7 +49,8 @@
     <input type="checkbox"
            class="form-check-input"
            id="useSymbols"
-           (input)="onChangeUseSymbols()"
+           [(ngModel)]="useSymbols"
+           [ngModelOptions]="{standalone: true}"
     >
     <label class="form-check-label"
            for="useSymbols"
@@ -55,7 +59,7 @@
     </label>
   </div>
   <button class="btn btn-outline-primary"
-          [disabled]="!passwordLength"
+          [disabled]="generateDisabled()"
           (click)="generatePassword()"
           type="button"
   >

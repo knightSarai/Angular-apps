@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -8,27 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class FormComponent implements OnInit {
 
   password = ''
-  passwordLength = 0;
+  passwordLength = 8;
   useLetters = false;
   useNumbers = false;
   useSymbols = false;
 
-  onChangeLength(event: Event) {
-    const inputValue = (<HTMLInputElement>event.target).value;
-    const parsedValue = parseInt(inputValue);
-    if (!isNaN(parsedValue)) this.passwordLength = parsedValue;
-  }
-
-  onChangeUseLetters() {
-    this.useLetters = !this.useLetters;
-  }
-
-  onChangeUseNumbers() {
-    this.useNumbers = !this.useNumbers;
-  }
-
-  onChangeUseSymbols() {
-    this.useSymbols = !this.useSymbols;
+  generateDisabled() {
+    return !(this.useLetters || this.useNumbers || this.useSymbols) || this.passwordLength <= 0;
   }
 
   generatePassword() {
@@ -42,7 +28,7 @@ export class FormComponent implements OnInit {
     let generatedPassword = '';
     for (let i = 0; i < this.passwordLength; i++) {
       const randomIndex = Math.floor(Math.random() * validChoices.length);
-      generatedPassword += validChoices[randomIndex]?? "";
+      generatedPassword += validChoices[randomIndex] ?? "";
     }
     this.password = generatedPassword
   }

@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.muted-input {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.muted-input:focus {
+  outline: none;
+}

@@ -7,13 +7,15 @@
             <h3>Typing Challenge</h3>
           </div>
           <div class="card-text">
-            <p>{{randomText}}</p>
+            <span *ngFor="let letter of randomText.split(''); let idx= index"
+                  [class]="compare(letter, enteredText[idx])"
+            >{{letter}}</span>
           </div>
-            <input class="form-control w-100"
-                   type="text"
-                   (input)="onTextInput($event)"
-            >
-          <div class="card-subtitle shadow-sm p-3 mt-4 text-muted"
+          <input class="border-0 muted-input w-100"
+                 type="text"
+                 (input)="onTextInput($event)"
+          >
+          <div class="card-subtitle shadow-sm p-3 mt-4 text-info"
                *ngIf="solved"
           >
             <h3>Success!</h3>
